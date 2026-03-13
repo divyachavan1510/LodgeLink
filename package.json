@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "node index.js"
   },
   "dependencies": {
     "cloudinary": "^1.30.0",
