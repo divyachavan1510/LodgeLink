@@ -118,7 +118,8 @@ async function main()
 
 
 
-
+//search route
+app.get('/search',listingController.search);
 
 //index route
 app.get("/listing",wrapAsync(listingController.index));
