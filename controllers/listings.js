@@ -140,9 +140,11 @@ module.exports.delete=async (req,res)=>
 
 // Simple search by title
 module.exports.search = async (req, res) => {
-  const q = req.query.q || ""; 
+   const q = (req.query.q || "").trim();
+
   const listings = await listing.find({
-    title: { $regex: q, $options: 'i' } // case-insensitive, matches partial word
+    title: { $regex: q, $options: "i" }
   });
+
   res.render("listings/index.ejs", { listings, q });
 };
