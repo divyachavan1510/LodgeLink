@@ -137,3 +137,12 @@ module.exports.delete=async (req,res)=>
     res.redirect("/listing");
 
 };
+
+// Simple search by title
+module.exports.search = async (req, res) => {
+  const q = req.query.q || ""; 
+  const listings = await listing.find({
+    title: { $regex: q, $options: 'i' } // case-insensitive, matches partial word
+  });
+  res.render("listings/index.ejs", { listings, q });
+};
