@@ -36,7 +36,10 @@ const {storage}=require("./cloudConfig.js");
 const upload = multer({ storage: storage  });
 
 
-
+app.use((req, res, next) => {
+    res.locals.q = req.query.q || "";
+    next();
+});
 
 app.set("view engine","ejs");
 app.set("views",path.join(__dirname,"views"));
